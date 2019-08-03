@@ -1,7 +1,2 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Faculties>
-  <Faculty FacultyID="1" FacultyShortName="FOCS">
-    <FacultyName>Faculty Of Computer Science</FacultyName>
-    <Description>haha</Description>
-  </Faculty>
-</Faculties>
+<Faculties/>
