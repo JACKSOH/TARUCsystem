@@ -22,3 +22,10 @@ Route::get('programme',function(){
     return view('accommodation_create');
 });
 Route::resource('staffhome','staffhomeController');
+Route::get('login',function(){
+    return view('staff_login');
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

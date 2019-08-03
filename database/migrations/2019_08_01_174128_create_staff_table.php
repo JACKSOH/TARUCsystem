@@ -13,14 +13,14 @@ class CreateStaffTable extends Migration
      */
     public function up()
     {
-        Schema::create('faculty', function (Blueprint $table) {
+        Schema::create('staff', function (Blueprint $table) {
             $table->bigIncrements('staff_id');
             $table->string('staff_name');
             $table->string('gender');
             $table->string('email');
             $table->string('role');
-            $table->unsignedBigInteger('department_id');
-            $table->unsignedBigInteger('faculty_id');
+            $table->unsignedBigInteger('department_id')->nullable();
+            $table->unsignedBigInteger('faculty_id')->nullable();
             $table->foreign('department_id')->references('department_id')->on('departments');
             $table->foreign('faculty_id')->references('faculty_id')->on('faculties');
         });
