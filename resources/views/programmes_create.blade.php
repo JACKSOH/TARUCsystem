@@ -72,15 +72,17 @@ and open the template in the editor.
                         <input type="text"  name="programme_name" required autofocus/>
                         <label for="programme_code">Programme Code</label>
                         <input type="text" name="programme_code" required/>
-                        <label for="duration">Duration Of Study</label>
-                        <input type="number" name="duration" min="1" max="10" required/>
+                        <label for="fduration">Duration Of Study</label>
+                        <input type="number" name="fduration" min="1" max="10" required/>
+                        <label for="pduration">Duration Of Study</label>
+                        <input type="number" name="pduration" min="1" max="10" required/>
                         <label for="faculty_id">Faculty</label>
         <select name="faculty">
             <option value="">Select Option</option>
             <?php $xmlfaculty = simplexml_load_file("/xampp/htdocs/TARUCsystem/resources/views/XML/faculty.xml") or die("Failed to load");
             foreach($xmlfaculty as $faculty){
             ?>
-            <option value="<?php $faculty->FacultyID ?>"><?php echo $faculty->FacultyName; ?></option>
+            <option value="1"><?php echo $faculty->FacultyName; ?></option>
             <?php } ?>
         </select>
 

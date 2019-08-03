@@ -68,6 +68,7 @@ and open the template in the editor.
                     <p> {{\Session::get('success')}}</p>
                     @endif
                     <?php
+                    use XSLTTransformation as XSLTTrans;
                     class XSLTTransformation{
                         public function __construct($xmlfilename, $xslfilename)
                         {
@@ -83,10 +84,8 @@ and open the template in the editor.
                             echo $proc->transformToXml($xml);
                         }
                     }
-                    use XSLTTransformation as XSLTTrans;
 
                     $programme = new XSLTTrans("/xampp/htdocs/TARUCsystem/resources/views/XML/programme.xml","/xampp/htdocs/TARUCsystem/resources/views/xslt/programme.xsl");
-
                     ?>
 
         <br/>

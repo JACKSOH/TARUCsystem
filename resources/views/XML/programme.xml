@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProgrammesList>
+  <Programme ProgrammeID="1" ProgrammeCode="vcvcx">
+    <ProgrammeName>czcx</ProgrammeName>
+    <ProgrammeDescription/>
+    <ProgrammeFullTimeDuration>4</ProgrammeFullTimeDuration>
+    <ProgrammePartTimeDuration/>
+    <ProfessionalCertification>zCxc</ProfessionalCertification>
+    <MER_SPM>2</MER_SPM>
+    <MER_STPM>2</MER_STPM>
+    <MER_desc/>
+  </Programme>
+  <Programme ProgrammeID="2" ProgrammeCode="jhjhj">
+    <ProgrammeName>hjhj</ProgrammeName>
+    <ProgrammeDescription/>
+    <ProgrammeFullTimeDuration>2</ProgrammeFullTimeDuration>
+    <ProgrammePartTimeDuration>2</ProgrammePartTimeDuration>
+    <ProfessionalCertification>jhgjh</ProfessionalCertification>
+    <MER_SPM>2</MER_SPM>
+    <MER_STPM>2</MER_STPM>
+    <MER_desc/>
+  </Programme>
+  <Programme ProgrammeID="4" ProgrammeCode=",m,">
+    <ProgrammeName>mnb,m</ProgrammeName>
+    <ProgrammeDescription/>
+    <ProgrammeFullTimeDuration>3</ProgrammeFullTimeDuration>
+    <ProgrammePartTimeDuration>2</ProgrammePartTimeDuration>
+    <ProfessionalCertification>bvb</ProfessionalCertification>
+    <MER_SPM>2</MER_SPM>
+    <MER_STPM>2</MER_STPM>
+    <MER_desc/>
+  </Programme>
+</ProgrammesList>

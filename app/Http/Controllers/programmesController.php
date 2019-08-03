@@ -15,21 +15,22 @@ class programmesController extends Controller
      */
     public function index()
     {
-        $programme = programme::all();
-
+        $programmes = programme::all();
+//
         $xmlp = new \DOMDocument("1.0","UTF-8");
         $xmlp->formatOutput=true;
         $xmlprogrammes=$xmlp->createElement('ProgrammesList');
-        foreach($programme as $prog){
+        foreach($programmes as $prog){
             $xmlprog=$xmlp->createElement('Programme');
             $xmlprogname=$xmlp->createElement('ProgrammeName',$prog->programme_name);
             $xmlprogdesc=$xmlp->createElement('ProgrammeDescription',$prog->programme_desc);
-            $xmlprogfduration=$xmlp->createElement('ProgrammeName',$prog->fulltime_duration);
-            $xmlprogpduration=$xmlp->createElement('ProgrammeDescription',$prog->parttime_duration);
-            $xmlprogpc=$xmlp->createElement('Professional Certification',$prog->professional_certification);
-            $xmlMER_SPM=$xmlp->createElement('ProgrammeDescription',$prog->MER_SPM);
-            $xmlMER_STPM=$xmlp->createElement('ProgrammeDescription',$prog->MER_STPM);
-            $xmlMER_UEC=$xmlp->createElement('ProgrammeDescription',$prog->MER_UEC);
+            $xmlprogfduration=$xmlp->createElement('ProgrammeFullTimeDuration',$prog->fulltime_duration);
+            $xmlprogpduration=$xmlp->createElement('ProgrammePartTimeDuration',$prog->parttime_duration);
+            $xmlprogpc=$xmlp->createElement('ProfessionalCertification',$prog->professional_certification);
+            $xmlMER_SPM=$xmlp->createElement('MER_SPM',$prog->MER_SPM);
+            $xmlMER_STPM=$xmlp->createElement('MER_STPM',$prog->MER_STPM);
+            $xmlMER_UEC=$xmlp->createElement('MER_UEC',$prog->MER_UEC);
+            $xmlMER_UEC=$xmlp->createElement('MER_desc',$prog->MER_desc);
 
             $xmlprog->setAttribute('ProgrammeID',$prog->programme_id);
             $xmlprog->setAttribute('ProgrammeCode',$prog->programme_code);
@@ -47,7 +48,7 @@ class programmesController extends Controller
         }
         $xmlp->appendChild($xmlprogrammes);
         $xmlp->save("/xampp/htdocs/TARUCsystem/resources/views/XML/programme.xml");
-        return view('programme_view');
+        return view('programme_view',compact('programmes'));
     }
 
     /**
@@ -90,8 +91,9 @@ class programmesController extends Controller
         $prog = new programme();
         $prog->programme_name = $request->get('programme_name');
         $prog->programme_code = $request->get('programme_code');
-        $prog->duration = $request->get('duration');
-        $prog->faculty_id = $request->get('faculty_id');
+        $prog->fulltime_duration = $request->get('fduration');
+        $prog->faculty_id = $request->get('faculty');
+        $prog->parttime_duration = $request->get('pduration');
         $prog->professional_certification = $request->get('professional_certification');
         $prog->MER_SPM = $request->get('MER_SPM');
         $prog->MER_STPM = $request->get('MER_STPM');
