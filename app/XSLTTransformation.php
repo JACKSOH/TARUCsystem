@@ -1,7 +1,14 @@
 <?php
 
 
-class XSLTTransformation{
+namespace app;
+
+
+use DOMDocument;
+use XSLTProcessor;
+
+class XSLTTransformation
+{
     public function __construct($xmlfilename, $xslfilename)
     {
         $xml = new DOMDocument();

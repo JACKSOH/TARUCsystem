@@ -17,13 +17,16 @@ class CreateProgrammesTable extends Migration
             $table->bigIncrements('programme_id');
             $table->string('programme_name');
             $table->string('programme_code')->unique();
-            $table->Integer('duration');
+            $table->string('programme_desc')->unique();
+            $table->Integer('fulltime_duration');
+            $table->Integer('parttime_duration');
             $table->unsignedBigInteger('level_of_study_id');
             $table->unsignedBigInteger('faculty_id');
             $table->string('professional_certification');
             $table->string('MER_SPM');
             $table->string('MER_STPM');
             $table->string('MER_UEC');
+            $table->string('MER_desc');
             $table->foreign('level_of_study_id')->references('level_of_study_id')->on('level_of_studies');
             $table->foreign('faculty_id')->references('faculty_id')->on('faculties');
         });

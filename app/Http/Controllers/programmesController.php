@@ -48,7 +48,7 @@ class programmesController extends Controller
         }
         $xmlp->appendChild($xmlprogrammes);
         $xmlp->save("/xampp/htdocs/TARUCsystem/resources/views/XML/programme.xml");
-        return view('programme_view',compact('programmes'));
+        return view('faculty/programme_view',compact('programmes'));
     }
 
     /**
