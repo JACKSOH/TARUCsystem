@@ -37,4 +37,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+public function get_type(){
+    if(isset($this->faculty_id)){
+        return "faculty";
+    }else{
+        return "department";
+    }
+}
+public function get_role(){
+    //dummy data
+    $role=$this->role;
+    return $role;
+}
 }

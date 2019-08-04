@@ -7,7 +7,7 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Http\Request;
 class LoginController extends Controller
 {
     /*
@@ -22,25 +22,25 @@ class LoginController extends Controller
     */
     public function login(Request $request){
 
-        dd($request->all());
-
-        if(Auth::attmept([
+        if(Auth::attempt([
             'email' =>$request->email,
-            'password' =>$request->password
-        ]))
+            'password' =>$request->password,
 
+        ]))
         {
             $user = User::where('email',$request->email)->first();
             //from user calss get check which is not null and return back to here
-            $role = $this->$user->getRole();
-            if($user->getType() =="faculty"){
+            $role = $user->get_role();
+
+
+            if($user->get_type() =="faculty"){
                 if($role=="admin"){
                     return redirect()->route('faculty.adminpage');
                 }elseif($role =="staff"){
                     return redirect()->route('faculty.staffpage');
 
                 }
-            }elseif($user->getType() =="department"){
+            }elseif($user->get_type() =="department"){
                 if($role=="admin"){
                     return redirect()->route('department.adminpage');
                 }elseif($role =="staff"){
@@ -48,8 +48,11 @@ class LoginController extends Controller
                 }
             }
         }
+        return redirect()->back();
 
     }
+
+
     use AuthenticatesUsers;
 
     /**
