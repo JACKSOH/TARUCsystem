@@ -30,7 +30,7 @@ class programmesController extends Controller
             $xmlMER_SPM=$xmlp->createElement('MER_SPM',$prog->MER_SPM);
             $xmlMER_STPM=$xmlp->createElement('MER_STPM',$prog->MER_STPM);
             $xmlMER_UEC=$xmlp->createElement('MER_UEC',$prog->MER_UEC);
-            $xmlMER_UEC=$xmlp->createElement('MER_desc',$prog->MER_desc);
+            $xmlMER_desc=$xmlp->createElement('MER_desc',$prog->MER_desc);
 
             $xmlprog->setAttribute('ProgrammeID',$prog->programme_id);
             $xmlprog->setAttribute('ProgrammeCode',$prog->programme_code);

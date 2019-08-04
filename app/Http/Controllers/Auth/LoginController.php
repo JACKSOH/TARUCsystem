@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
+
+use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -17,7 +20,36 @@ class LoginController extends Controller
     | to conveniently provide its functionality to your applications.
     |
     */
+    public function login(Request $request){
 
+        dd($request->all());
+
+        if(Auth::attmept([
+            'email' =>$request->email,
+            'password' =>$request->password
+        ]))
+
+        {
+            $user = User::where('email',$request->email)->first();
+            //from user calss get check which is not null and return back to here
+            $role = $this->$user->getRole();
+            if($user->getType() =="faculty"){
+                if($role=="admin"){
+                    return redirect()->route('faculty.adminpage');
+                }elseif($role =="staff"){
+                    return redirect()->route('faculty.staffpage');
+
+                }
+            }elseif($user->getType() =="department"){
+                if($role=="admin"){
+                    return redirect()->route('department.adminpage');
+                }elseif($role =="staff"){
+                    return redirect()->route('department.staffpage');
+                }
+            }
+        }
+
+    }
     use AuthenticatesUsers;
 
     /**
@@ -36,4 +68,5 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
 }

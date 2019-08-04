@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\faculty;
+use App\department;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -63,14 +65,32 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
-    }
-    protected function showSelection(string $reference){
+        echo $data['role'];
+        if($data['create_for'] =="faculty"){
+            return User::create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'password' => Hash::make($data['password']),
+                'role' =>$data['role'],
+                'faculty_id' => $data['ddl_create_for']
+            ]);
+        }else{
+            return User::create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'password' => Hash::make($data['password']),
+                'role' =>$data['role'],
+                'department_id' => $data['ddl_create_for']
+            ]);
+        }
 
+
+    }
+
+    function index(){
+        $faculty = faculty::all();
+        $department = department::all();
+        return view('auth\register',compact('faculty'),compact('department'));
 
     }
 }
